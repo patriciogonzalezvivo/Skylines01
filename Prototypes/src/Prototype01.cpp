@@ -17,6 +17,8 @@ void Prototype01::selfSetup(){
     video.initGrabber(640, 480);
     fbo.allocate(640,480);
     pixels.allocate(640, 480, 3);
+    
+    edgeShader.loadFrag(getDataPath()+"/shaders/edge.frag");
 }
 
 void Prototype01::selfSetupGuis(){
@@ -119,6 +121,14 @@ vector<ofPolyline> Prototype01::getPaths(ofPixels& img, float minGapLength, int 
 }
 
 void Prototype01::selfUpdate(){
+    video.update();
+    
+    fbo.begin();
+    ofClear(0);
+    edgeShader.begin();
+    video.draw(0, 0);
+    edgeShader.end();
+    fbo.end();
     
     //  CONTOUR
     //
@@ -155,7 +165,15 @@ void Prototype01::selfUpdate(){
 }
 
 void Prototype01::selfDraw(){
-
+    ofPushMatrix();
+    ofTranslate(ofGetWidth()*0.5-fbo.getWidth()*0.5, ofGetHeight()*0.5-fbo.getHeight()*0.5);
+    
+    for (int i = 0; i < contourLines.size(); i++) {
+        contourLines[i].draw();
+    }
+    
+    fbo.draw(0,0);
+    ofPopMatrix();
 }
 
 void Prototype01::selfPostDraw(){
