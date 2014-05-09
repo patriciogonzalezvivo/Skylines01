@@ -161,7 +161,7 @@ vector<ofPolyline> testApp::getPaths(ofPixels& img, float minGapLength, int minP
 void testApp::draw() {
     ofBackground(0);
     
-    for (int i = 0; i < lines.size(); i++) {
-        lines[i].draw();
+    if(!frame.empty()){
+        drawMat(edge,0, 0);
     }
 }
