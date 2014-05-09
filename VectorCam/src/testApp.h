@@ -3,10 +3,10 @@
 #include "ofMain.h"
 #include "ofxXmlSettings.h"
 
+#include "ofxCv.h"
+
 #ifdef TARGET_RASPBERRY_PI
 #include "ofxCvPiCam.h"
-#else 
-#include "ofxCv.h"
 #endif
 
 class testApp : public ofBaseApp {
@@ -20,9 +20,7 @@ public:
 #else
 	ofVideoGrabber cam;
 #endif
-
     cv::Mat frame, edge;
-    
     ofPixels pixels;
     
     vector<ofPolyline>  getPaths(ofPixels& img, float minGapLength = 2, int minPathLength = 1);

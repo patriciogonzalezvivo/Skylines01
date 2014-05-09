@@ -17,10 +17,10 @@ void testApp::setup() {
 void testApp::update() {
 #ifdef TARGET_RASPBERRY_PI
     frame = cam.grab();
-    if(!frame.empty()) {
+    if(!frame.empty()){
 #else
 	cam.update();
-	if(cam.isFrameNew()) {
+	if(cam.isFrameNew()){
         cv::Mat vcCam = toCv(cam);
 		convertColor(vcCam, frame, CV_RGB2GRAY);
 #endif
@@ -65,7 +65,6 @@ void testApp::update() {
         
         {
             ofxXmlSettings XML;
-            
             XML.addTag("svg");
             XML.addAttribute("svg", "version", "1.2",0);
             XML.addAttribute("svg", "baseProfile", "tiny",0);
@@ -100,10 +99,7 @@ void testApp::update() {
             if (XML.save("test.svg")){
                 ofExit();
             }
-            
-            
         }
-        
 	}
 }
 
