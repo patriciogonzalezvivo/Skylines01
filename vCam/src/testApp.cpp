@@ -7,6 +7,8 @@ void testApp::setup() {
     ofDisableDataPath();
     ofSetFrameRate(10);
     
+    ofSetWindowShape(width, height);
+    
 #ifdef TARGET_RASPBERRY_PI
     cam.setup(width, height,false);
 #else
