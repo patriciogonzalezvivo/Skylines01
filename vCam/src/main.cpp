@@ -117,11 +117,23 @@ int main(int argc, char * argv[]){
         cout << endl;
         cout << "Usage: vCam [options] -o file.svg" << endl;
         cout << endl;
-        cout << "Options:" << endl;
+        cout << "Commands and default values:" << endl;
+        cout << "-s                     " << app->timer << endl;
+        cout << "--width                " << app->width << endl;
+        cout << "--height               " << app->height << endl;
+        cout << "--canny1               " << app->CannyThreshold1 << endl;
+        cout << "--canny2               " << app->CannyThreshold2 << endl;
+        cout << "--CannyMinPathLength   " << app->CannyMinPathLength << endl;
+        cout << "--CannyMinGapLength    " << app->CannyMinGapLength << endl;
+        cout << "--hough                " << app->bHough << endl;
+        cout << "--HoughtMinLinLenght   " << app->HoughtMinLinLenght << endl;
+        cout << "--HoughtMaxLineGap     " << app->HoughtMaxLineGap << endl;
+        cout << "--space                " << app->space << endl;
+        cout << "--smooth               " << app->smooth << endl;
         return 0;
     }
     
-    //  INPUT SVG file
+    //  OUTPUT SVG file
     //
     char * filename = getCmdOption(argv, argv+argc, "-o");
     if (filename){
