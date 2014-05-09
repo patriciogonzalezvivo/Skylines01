@@ -40,7 +40,7 @@ void testApp::update() {
             
             if(bHough){
                 vector<Vec4i> cvlines;
-                HoughLinesP(edge, cvlines, 1,(PI/180),1,CannyMinGapLength,CannyMinPathLength);
+                HoughLinesP(edge, cvlines, 1,(PI/180),1,HoughtMinLinLenght, HoughtMaxLineGap);
                 for( size_t i = 0; i < cvlines.size(); i++ ){
                     ofPolyline line;
                     line.addVertex(ofPoint(cvlines[i][0],cvlines[i][1]));
