@@ -19,7 +19,7 @@ bool cmdOptionExists(char** begin, char** end, const std::string& option){
 }
 
 void printVersion(){
-    cout << "VectorCam 0.1" << endl;
+    cout << "vCam 0.1" << endl;
     cout << "Copyright (c) 2014 Patricio Gonzalez Vivo ( http://www.patriciogonzalezvivo.com )" << endl;
     cout << "This is free software with ABSOLUTELY NO WARRANTY." << endl;
 }
@@ -27,23 +27,7 @@ void printVersion(){
 //========================================================================
 int main(int argc, char * argv[]){
     
-    //  SYSTEM
-    //----------------------------------------------
-    //
-//#ifdef TARGET_RASPBERRY_PI
-//    bool noWindows = true;
-//    if(cmdOptionExists(argv, argv+argc, "-x")){
-//        noWindows = false;
-//    }
-//#else
-//    bool noWindows = false;
-//#endif
-//    ofAppNoWindow noWindowApp;
-//    if(noWindows){
-//        ofSetupOpenGL(&noWindowApp, 1024,768, OF_WINDOW);
-//    } else {
-        ofSetupOpenGL(1024,768, OF_WINDOW);
-//    }
+    ofSetupOpenGL(1024,768, OF_WINDOW);
     
     testApp *app = new testApp();
     app->width = 640;
@@ -131,7 +115,7 @@ int main(int argc, char * argv[]){
     if(cmdOptionExists(argv, argv+argc, "-h")){
         printVersion();
         cout << endl;
-        cout << "Usage: VectorCam [options] -o file.svg" << endl;
+        cout << "Usage: vCam [options] -o file.svg" << endl;
         cout << endl;
         cout << "Options:" << endl;
         return 0;
