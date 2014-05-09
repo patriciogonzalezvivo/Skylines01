@@ -1,6 +1,5 @@
 //
 //  Prototype01.h
-//  PrintMaking
 //
 //  Created by Patricio Gonzalez Vivo on 9/23/13.
 //

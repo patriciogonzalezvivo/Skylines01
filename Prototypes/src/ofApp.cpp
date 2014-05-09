@@ -27,6 +27,18 @@ void ofApp::keyPressed(int key){
         project = new Prototype01();
         project->setup();
         project->play();
+    } else if(key == OF_KEY_F2){
+        project->stop();
+        delete project;
+        project = new Prototype02();
+        project->setup();
+        project->play();
+    } else if(key == OF_KEY_F3){
+        project->stop();
+        delete project;
+        project = new Prototype03();
+        project->setup();
+        project->play();
     }
 }
 

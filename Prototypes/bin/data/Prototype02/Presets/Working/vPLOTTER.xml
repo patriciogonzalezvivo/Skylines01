@@ -1,0 +1,37 @@
+<Canvas>
+    <Kind>40</Kind>
+    <Name>vPLOTTER</Name>
+    <IsMinified>0</IsMinified>
+    <XPosition>36.000000000</XPosition>
+    <YPosition>416.000000000</YPosition>
+</Canvas>
+<Widget>
+    <Kind>2</Kind>
+    <Name>ENABLE</Name>
+    <Value>1</Value>
+</Widget>
+<Widget>
+    <Kind>42</Kind>
+    <Name>motorsDistance_(mm)</Name>
+    <Value>1546</Value>
+</Widget>
+<Widget>
+    <Kind>42</Kind>
+    <Name>pulleyRadius_(mm)</Name>
+    <Value>5</Value>
+</Widget>
+<Widget>
+    <Kind>42</Kind>
+    <Name>stepsPerRotation</Name>
+    <Value>800</Value>
+</Widget>
+<Widget>
+    <Kind>42</Kind>
+    <Name>penUp_(deg)</Name>
+    <Value>70</Value>
+</Widget>
+<Widget>
+    <Kind>42</Kind>
+    <Name>penDown_(deg)</Name>
+    <Value>140</Value>
+</Widget>

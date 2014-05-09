@@ -19,7 +19,9 @@
 		28090deb5109115003e8f1c540f04092 /* UdpSocketWin.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5928aa323f5c2690b06c837d8d036f55 /* UdpSocketWin.cpp */; };
 		2d1b256a63780bb017becd1a57da62a3 /* Recorder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 644e48902b62fe6144a2bf9fb149e169 /* Recorder.cpp */; };
 		341db29ff1d926957e046f48a7a4cf25 /* SystemTextbox.mm in Sources */ = {isa = PBXBuildFile; fileRef = 5cf537034ea91bb69884bf12f5c3159b /* SystemTextbox.mm */; };
-		3D09A1F418F4A57800183CC4 /* UIvPlotter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3D09A1F218F4A57800183CC4 /* UIvPlotter.cpp */; };
+		3D08518C191D35790035E679 /* UIvPlotter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3D08518A191D35790035E679 /* UIvPlotter.cpp */; };
+		3D085192191D36290035E679 /* Prototype02.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3D08518E191D36290035E679 /* Prototype02.cpp */; };
+		3D085193191D36290035E679 /* Prototype03.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3D085190191D36290035E679 /* Prototype03.cpp */; };
 		3DBF8C09191BC24C00569C5B /* ofxUI2DGraph.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3DBF8BAC191BC24C00569C5B /* ofxUI2DGraph.cpp */; };
 		3DBF8C0A191BC24C00569C5B /* ofxUI2DPad.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3DBF8BAE191BC24C00569C5B /* ofxUI2DPad.cpp */; };
 		3DBF8C0B191BC24C00569C5B /* ofxUIBaseDraws.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3DBF8BB0191BC24C00569C5B /* ofxUIBaseDraws.cpp */; };
@@ -212,8 +214,12 @@
 		3687eebddd09f92c8ea74c3019caeb0f /* Recorder.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = Recorder.h; path = ../../../addons/ofxUIProject/src/log/Recorder.h; sourceTree = SOURCE_ROOT; };
 		36f0ff7f8d7342d220cc6319cac5ad59 /* dummy.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = dummy.h; path = ../../../addons/ofxOpenCv/libs/opencv/include/opencv2/flann/dummy.h; sourceTree = SOURCE_ROOT; };
 		37420e1e4019bbc4b25492ee29ca6960 /* UILog.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = UILog.cpp; path = ../../../addons/ofxUIProject/src/log/UILog.cpp; sourceTree = SOURCE_ROOT; };
-		3D09A1F218F4A57800183CC4 /* UIvPlotter.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = UIvPlotter.cpp; sourceTree = "<group>"; };
-		3D09A1F318F4A57800183CC4 /* UIvPlotter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIvPlotter.h; sourceTree = "<group>"; };
+		3D08518A191D35790035E679 /* UIvPlotter.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = UIvPlotter.cpp; sourceTree = "<group>"; };
+		3D08518B191D35790035E679 /* UIvPlotter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIvPlotter.h; sourceTree = "<group>"; };
+		3D08518E191D36290035E679 /* Prototype02.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Prototype02.cpp; sourceTree = "<group>"; };
+		3D08518F191D36290035E679 /* Prototype02.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Prototype02.h; sourceTree = "<group>"; };
+		3D085190191D36290035E679 /* Prototype03.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Prototype03.cpp; sourceTree = "<group>"; };
+		3D085191191D36290035E679 /* Prototype03.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Prototype03.h; sourceTree = "<group>"; };
 		3DBF8BAB191BC24C00569C5B /* ofxUI.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ofxUI.h; sourceTree = "<group>"; };
 		3DBF8BAC191BC24C00569C5B /* ofxUI2DGraph.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = ofxUI2DGraph.cpp; sourceTree = "<group>"; };
 		3DBF8BAD191BC24C00569C5B /* ofxUI2DGraph.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ofxUI2DGraph.h; sourceTree = "<group>"; };
@@ -749,14 +755,14 @@
 			name = libs;
 			sourceTree = "<group>";
 		};
-		3D09A1F118F4A57800183CC4 /* UIvPlotter */ = {
+		3D085189191D35790035E679 /* UIvPlotter */ = {
 			isa = PBXGroup;
 			children = (
-				3D09A1F218F4A57800183CC4 /* UIvPlotter.cpp */,
-				3D09A1F318F4A57800183CC4 /* UIvPlotter.h */,
+				3D08518A191D35790035E679 /* UIvPlotter.cpp */,
+				3D08518B191D35790035E679 /* UIvPlotter.h */,
 			);
 			name = UIvPlotter;
-			path = ../../../addons/ofxUIProject/extra/UIvPlotter;
+			path = ../../../vPlotter/UIvPlotter;
 			sourceTree = "<group>";
 		};
 		3DBF8BA9191BC24C00569C5B /* ofxUI */ = {
@@ -944,7 +950,6 @@
 		534d7afab9219e3e87cb95eb92f126c2 /* ofxUIProject */ = {
 			isa = PBXGroup;
 			children = (
-				3D09A1F118F4A57800183CC4 /* UIvPlotter */,
 				e7697fe6368558ac94fbe91fd2ea9d1a /* src */,
 			);
 			name = ofxUIProject;
@@ -1214,6 +1219,11 @@
 				E4B69E1E0A3A1BDC003C02F2 /* ofApp.cpp */,
 				87d382f79966184cf62383a1c2f1ce06 /* Prototype01.h */,
 				31b4509dc7322cd2c19880fb2df8285b /* Prototype01.cpp */,
+				3D08518F191D36290035E679 /* Prototype02.h */,
+				3D08518E191D36290035E679 /* Prototype02.cpp */,
+				3D085191191D36290035E679 /* Prototype03.h */,
+				3D085190191D36290035E679 /* Prototype03.cpp */,
+				3D085189191D35790035E679 /* UIvPlotter */,
 			);
 			path = src;
 			sourceTree = SOURCE_ROOT;
@@ -1575,6 +1585,7 @@
 				3DBF8C2C191BC24C00569C5B /* ofxUITabBar.cpp in Sources */,
 				7cdad32be4fa46701e3552c7b6b91e58 /* RunningBackground.cpp in Sources */,
 				10b69de456aed1288fc9316b62b715d7 /* Tracker.cpp in Sources */,
+				3D085193191D36290035E679 /* Prototype03.cpp in Sources */,
 				a6668c5b1272d7fcd5b5a16fd76b2bf8 /* Utilities.cpp in Sources */,
 				dbcb84a37f9aecc254870d79a0a7486e /* Wrappers.cpp in Sources */,
 				3DBF8C18191BC24C00569C5B /* ofxUIImageSlider.cpp in Sources */,
@@ -1584,7 +1595,6 @@
 				3DBF8C15191BC24C00569C5B /* ofxUIImage.cpp in Sources */,
 				ae32f1807796b1050e082651a5fbf40d /* json_value.cpp in Sources */,
 				9b06c5cae570b630a97e51c38887e84b /* json_writer.cpp in Sources */,
-				3D09A1F418F4A57800183CC4 /* UIvPlotter.cpp in Sources */,
 				3DBF8C26191BC24C00569C5B /* ofxUIScrollableCanvas.cpp in Sources */,
 				250a95ba26587be85db0a353e6e1dea2 /* ofxCvColorImage.cpp in Sources */,
 				1d5f3298c2fa073628012944b1efde88 /* ofxCvContourFinder.cpp in Sources */,
@@ -1632,6 +1642,7 @@
 				9316dd9c0e2c814e402b0d2b68c24927 /* UIFog.cpp in Sources */,
 				3DBF8C32191BC24C00569C5B /* ofxUIWaveform.cpp in Sources */,
 				e34df0f08ae23dc9eca1cbe59b3e2bce /* UILight.cpp in Sources */,
+				3D08518C191D35790035E679 /* UIvPlotter.cpp in Sources */,
 				7caf3ae440760530f4a24ddebaeb4f1c /* UIMaterial.cpp in Sources */,
 				3DBF8C30191BC24C00569C5B /* ofxUIToggleMatrix.cpp in Sources */,
 				3DBF8C2B191BC24C00569C5B /* ofxUISuperCanvas.cpp in Sources */,
@@ -1650,6 +1661,7 @@
 				3DBF8C14191BC24C00569C5B /* ofxUIFPSSlider.cpp in Sources */,
 				59d828ffa934ce170aa312a1c2a9333d /* HotKeys_impl_linux.cpp in Sources */,
 				3DBF8C28191BC24C00569C5B /* ofxUISortableList.cpp in Sources */,
+				3D085192191D36290035E679 /* Prototype02.cpp in Sources */,
 				edaac915856fa53c6e992677ede51729 /* HotKeys_impl_mac.mm in Sources */,
 				ee2a94f476344c37c2e03fb87ac9b561 /* HotKeys_impl_win.cpp in Sources */,
 				3DBF8C27191BC24C00569C5B /* ofxUISlider.cpp in Sources */,
