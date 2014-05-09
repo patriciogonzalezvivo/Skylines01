@@ -35,4 +35,6 @@ public:
     float   space, smooth;
     
     bool    bHough;
+    
+    int     counter;
 };

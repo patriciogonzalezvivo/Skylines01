@@ -5,22 +5,26 @@ using namespace cv;
 
 void testApp::setup() {
     ofDisableDataPath();
-    ofSetFrameRate(15);
+    ofSetFrameRate(10);
     
 #ifdef TARGET_RASPBERRY_PI
     cam.setup(width, height,false);
 #else
 	cam.initGrabber(width, height);
 #endif
+    
+    counter = 0;
 }
 
 void testApp::update() {
+    counter++;
+    
 #ifdef TARGET_RASPBERRY_PI
     frame = cam.grab();
-    if(!frame.empty()){
+    if(!frame.empty() && counter > 100 ){
 #else
 	cam.update();
-	if(cam.isFrameNew()){
+	if(cam.isFrameNew() && counter > 100){
         cv::Mat vcCam = toCv(cam);
 		convertColor(vcCam, frame, CV_RGB2GRAY);
 #endif
