@@ -12,7 +12,7 @@ setInterval( function(){
     response.getBody();
     var status = JSON.parse(response.body);
 
-    console.log(status);
+    // console.log(status);
 
     if(status['printing']){
       console.log(vPlotterServer+' is Printing');
@@ -21,8 +21,9 @@ setInterval( function(){
 
       //  Generate SVG
       //
+      console.log('Running vCam to generate a new SVG file');
       var command = './vCam --width 480 --height 640 --space 5 --canny1 1040';
-      var VCAM = exec(command, function (error, stdout, stderr) {
+      var VCAMPIPE = exec(command, function (error, stdout, stderr) {
 
         //  Send SVG
         //
