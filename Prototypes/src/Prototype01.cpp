@@ -15,14 +15,9 @@ void Prototype01::selfSetup(){
     ofEnableSmoothing();
     
     video.initGrabber(640, 480);
-    fbo.allocate(640,480);
-    pixels.allocate(640, 480, 3);
-    
-    edgeShader.loadFrag(getDataPath()+"/shaders/edge.frag");
 }
 
 void Prototype01::selfSetupGuis(){
-    guiAdd(edgeShader);
 }
 
 void Prototype01::selfGuiEvent(ofxUIEventArgs &e){
@@ -30,8 +25,16 @@ void Prototype01::selfGuiEvent(ofxUIEventArgs &e){
 }
 
 void Prototype01::selfSetupSystemGui(){
-    sysGui->addSlider("Canny_Threshold1", 0.0, 1.0, &fCannyThreshold1);
-    sysGui->addSlider("Canny_Threshold2",0.0,1.0,&fCannyThreshold2);
+    sysGui->addLabel("HoughLines");
+    sysGui->addSlider("HoughtRho", 1.0, 10.0, &houghtRho);
+    sysGui->addSlider("HoughtTheta", 1.0, 90, &houghtTheta);
+    sysGui->addSlider("HoughtThreshold", 1, 100, &houghtThreshold);
+    sysGui->addSlider("HoughtMinLinLength", 1, 100, &houghtMinLinLenght);
+    sysGui->addSlider("HoughtMaxLineGap", 1, 100, &houghtMaxLineGap);
+    
+    sysGui->addLabel("Canny");
+    sysGui->addSlider("Canny_Threshold1", 0.0, 1024, &fCannyThreshold1);
+    sysGui->addSlider("Canny_Threshold2",0.0,1024,&fCannyThreshold2);
     sysGui->addSlider("MinGapLenght", 2.0, 12.0, &minGapLength);
     sysGui->addSlider("MinPathLenght", 0.0, 50.0, &minPathLength);
     sysGui->addSlider("pathSpace", 0.0, 10.0, &contourSpace);
@@ -45,8 +48,7 @@ void Prototype01::selfSetupSystemGui(){
 void Prototype01::guiSystemEvent(ofxUIEventArgs &e){
     string name = e.widget->getName();
     
-    if(name == "Canny_Threshold1" || name == "Canny_Threshold2" ||
-       name == "MinGapLenght" || name == "MinPathLenght" ||
+    if(name == "MinGapLenght" || name == "MinPathLenght" ||
        name == "pathSpace" || name == "pathSmooth"){
         bTrace = true;
     }
@@ -122,43 +124,52 @@ vector<ofPolyline> Prototype01::getPaths(ofPixels& img, float minGapLength, int 
 
 void Prototype01::selfUpdate(){
     video.update();
-    
-    fbo.begin();
-    ofClear(0);
-    edgeShader.begin();
-    video.draw(0, 0);
-    edgeShader.end();
-    fbo.end();
-    
+
     //  CONTOUR
     //
-    if(bTrace){
-        getRenderTarget().getTextureReference().readToPixels(pixels);
-        ofPixels gray;
-        convertColor(pixels, gray, CV_RGB2GRAY);
+    if(video.isFrameNew()){
+        convertColor(video, image, CV_RGB2GRAY);
+        image.update();
+		Canny(image, canny, fCannyThreshold1*2.0, fCannyThreshold2*2.0, 5);
+        canny.update();
         
-		Canny(gray, pixels, fCannyThreshold1*255., fCannyThreshold2*255., 3);
-        
-        contourLines.clear();
-        vector<ofPolyline> tmp = getPaths(pixels, minGapLength, minPathLength);
-        for (int i = 0; i < tmp.size(); i++) {
-            ofPolyline contornoSpaced;
-            ofPolyline contornoSmooth;
-            
-            if (contourSpace>0.0){
-                contornoSpaced = tmp[i].getResampledBySpacing(contourSpace);
-            } else {
-                contornoSpaced = tmp[i];
+        if(bTrace)
+        {
+            contourLines.clear();
+            vector<ofPolyline> tmp = getPaths(canny.getPixelsRef(), minGapLength, minPathLength);
+            for (int i = 0; i < tmp.size(); i++) {
+                ofPolyline contornoSpaced;
+                ofPolyline contornoSmooth;
+                
+                if (contourSpace>0.0){
+                    contornoSpaced = tmp[i].getResampledBySpacing(contourSpace);
+                } else {
+                    contornoSpaced = tmp[i];
+                }
+                
+                if (contourSmooth>0.0){
+                    contornoSmooth = contornoSpaced.getSmoothed(contourSmooth);
+                } else {
+                    contornoSmooth = contornoSpaced;
+                }
+                
+                contourLines.push_back(contornoSmooth);
             }
-            
-            if (contourSmooth>0.0){
-                contornoSmooth = contornoSpaced.getSmoothed(contourSmooth);
-            } else {
-                contornoSmooth = contornoSpaced;
-            }
-            
-            contourLines.push_back(contornoSmooth);
         }
+        
+        houghLines.clear();
+		Mat srcMat = toCv(canny);
+        vector<Vec4i> lines;
+        HoughLinesP(srcMat, lines, houghtRho,(PI/180)*houghtTheta,houghtThreshold,houghtMinLinLenght,houghtMaxLineGap);
+        for( size_t i = 0; i < lines.size(); i++ ){
+            Line line;
+            line.a.x = lines[i][0];
+            line.a.y = lines[i][1];
+            line.b.x = lines[i][2];
+            line.b.y = lines[i][3];
+            houghLines.push_back(line);
+        }
+        
         
         bTrace = false;
     }
@@ -166,13 +177,42 @@ void Prototype01::selfUpdate(){
 
 void Prototype01::selfDraw(){
     ofPushMatrix();
-    ofTranslate(ofGetWidth()*0.5-fbo.getWidth()*0.5, ofGetHeight()*0.5-fbo.getHeight()*0.5);
+    ofTranslate(ofGetWidth()*0.5, ofGetHeight()*0.5);
+    ofSetColor(255);
     
+    ofPushMatrix();
+    ofTranslate(-video.getWidth(),-video.getHeight()*1.0);
+    canny.draw(0, 0);
+    
+    ofSetColor(255,0,0);
     for (int i = 0; i < contourLines.size(); i++) {
         contourLines[i].draw();
     }
+    ofPopMatrix();
     
-    fbo.draw(0,0);
+    ofPushMatrix();
+    ofTranslate(0,-video.getHeight()*1.0);
+    ofSetColor(0);
+    ofFill();
+    ofRect(0, 0, video.getWidth(),video.getHeight());
+    ofSetColor(255);
+    for(int i = 0; i < houghLines.size();i++){
+        ofLine(houghLines[i].a, houghLines[i].b);
+    }
+    ofPopMatrix();
+    
+    ofPushMatrix();
+    ofTranslate(-video.getWidth()*0.5,0);
+    ofSetColor(255,1);
+    for (int i = 0; i < contourLines.size(); i++) {
+        contourLines[i].draw();
+    }
+    contourLines.clear();
+    for(int i = 0; i < houghLines.size();i++){
+        ofLine(houghLines[i].a, houghLines[i].b);
+    }
+    ofPopMatrix();
+    
     ofPopMatrix();
 }
 
@@ -187,7 +227,8 @@ void Prototype01::selfExit(){
 }
 
 void Prototype01::selfKeyPressed(ofKeyEventArgs & args){
-
+//    contourLines.clear();
+    bTrace = true;
 }
 
 void Prototype01::selfKeyReleased(ofKeyEventArgs & args){

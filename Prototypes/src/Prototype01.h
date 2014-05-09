@@ -9,9 +9,12 @@
 #pragma once
 
 #include "UI2DProject.h"
-#include "UIShader.h"
 
 #include "ofxCv.h"
+
+struct Line{
+    ofPoint a,b;
+};
 
 class Prototype01 : public UI2DProject {
 public:
@@ -44,9 +47,7 @@ public:
 protected:
     
     ofVideoGrabber      video;
-    UIShader            edgeShader;
-    ofFbo               fbo;
-    ofPixels            pixels;
+    ofImage             image,canny;
     
     //  Line Tracer
     //
@@ -61,4 +62,6 @@ protected:
     bool                bContour;
     bool                bTrace;
     
+    vector<Line>        houghLines;
+    float               houghtRho,houghtTheta,houghtThreshold,houghtMinLinLenght,houghtMaxLineGap;
 };
