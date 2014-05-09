@@ -1,3 +1,4 @@
 ofxCv
 ofxCvPiCam
 ofxOpenCv
+ofxXmlSettings
