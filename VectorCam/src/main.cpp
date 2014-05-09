@@ -30,20 +30,20 @@ int main(int argc, char * argv[]){
     //  SYSTEM
     //----------------------------------------------
     //
-#ifdef TARGET_RASPBERRY_PI
-    bool noWindows = true;
-    if(cmdOptionExists(argv, argv+argc, "-x")){
-        noWindows = false;
-    }
-#else
-    bool noWindows = false;
-#endif
-    ofAppNoWindow noWindowApp;
-    if(noWindows){
-        ofSetupOpenGL(&noWindowApp, 1024,768, OF_WINDOW);
-    } else {
+//#ifdef TARGET_RASPBERRY_PI
+//    bool noWindows = true;
+//    if(cmdOptionExists(argv, argv+argc, "-x")){
+//        noWindows = false;
+//    }
+//#else
+//    bool noWindows = false;
+//#endif
+//    ofAppNoWindow noWindowApp;
+//    if(noWindows){
+//        ofSetupOpenGL(&noWindowApp, 1024,768, OF_WINDOW);
+//    } else {
         ofSetupOpenGL(1024,768, OF_WINDOW);
-    }
+//    }
     
     testApp *app = new testApp();
     app->width = 640;
@@ -58,7 +58,12 @@ int main(int argc, char * argv[]){
     app->HoughtMinLinLenght = 17;
     app->HoughtMaxLineGap = 5;
     app->fileName = "test.svg";
+    app->timer = 1;
     
+    char * seconds = getCmdOption(argv, argv+argc, "-s");
+    if(seconds){
+        app->timer = ofToFloat(seconds)*10;
+    }
     
     char * width = getCmdOption(argv, argv+argc, "--width");
     if(width){

@@ -36,5 +36,5 @@ public:
     
     bool    bHough;
     
-    int     counter;
+    int     counter, timer;
 };

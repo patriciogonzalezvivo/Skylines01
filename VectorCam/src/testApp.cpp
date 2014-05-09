@@ -31,7 +31,7 @@ void testApp::update() {
         
         counter++;
         
-        if (counter > 50){
+        if (counter > timer){
             toOf(edge, pixels);
             
             vector<ofPolyline> tmp;
