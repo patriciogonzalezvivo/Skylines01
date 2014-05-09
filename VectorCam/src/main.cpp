@@ -138,12 +138,6 @@ int main(int argc, char * argv[]){
     if (filename){
         app->fileName = filename;
     }
-#ifdef TARGET_RASPBERRY_PI
-    else {
-        cout << "Usage: vPlotter [options] -i file.svg" << endl;
-        return 0;
-    }
-#endif
     
     ofRunApp( app );
 }
