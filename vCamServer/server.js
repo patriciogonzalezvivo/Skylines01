@@ -3,7 +3,7 @@ var fs = require('fs');
 var FormData = require('form-data');
 var exec = require('child_process').exec;  // running cmd
 
-var vPlotterServer = '192.168.1.12';
+var vPlotterServer = 'rpii.local';
 var seconds = 10;
 
 setInterval( function(){
@@ -29,7 +29,7 @@ setInterval( function(){
         //
         var form = new FormData();
         form.append('rotate', 0);
-        form.append('scale', 100);
+        form.append('scale', 80);
         form.append('file', fs.createReadStream(__dirname+'/test.svg'));
 
         form.submit('http://'+vPlotterServer+':8080/addFile', function(err, res) {
