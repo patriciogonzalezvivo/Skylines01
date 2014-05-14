@@ -56,7 +56,7 @@ int main(int argc, char * argv[]){
     
     char * height = getCmdOption(argv, argv+argc, "--height");
     if(height){
-        app->height = ofToInt(width);
+        app->height = ofToInt(height);
     }
     
     char * CannyThreshold1 = getCmdOption(argv, argv+argc, "--canny1");
