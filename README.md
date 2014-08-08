@@ -1,8 +1,10 @@
+# Skylines I
+
 Drawing machine that slowly reveals an image of the world viewed through the tireless eye of technology. It constantly adds traces of material, demonstrating that the drive for immediacy is not inherent in technology.
 
 ![IMAGE](Design/sk01.png)
 
-# [SKYLINES](http://www.patriciogonzalezvivo.com/2014/skylines/)
+## [About SKYLINES](http://www.patriciogonzalezvivo.com/2014/skylines/)
 
 This series of projects is about awareness. It is about the tools and techniques we use to see the world around us.
 
