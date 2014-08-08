@@ -4,7 +4,7 @@ Drawing machine that slowly reveals an image of the world viewed through the tir
 
 ![IMAGE](Design/sk01.png)
 
-<iframe src="https://www.flickr.com/photos/106950246@N06/14212196323/in/set-72157642289868503/player/" width="75" height="75" frameborder="0" allowfullscreen webkitallowfullscreen mozallowfullscreen oallowfullscreen msallowfullscreen></iframe>
+<iframe src="https://www.flickr.com/photos/106950246@N06/14212196323/in/set-72157642289868503/player/" width="575" height="740" frameborder="0" allowfullscreen webkitallowfullscreen mozallowfullscreen oallowfullscreen msallowfullscreen></iframe>
 
 ## [About SKYLINES](http://www.patriciogonzalezvivo.com/2014/skylines/)
 
